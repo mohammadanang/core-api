@@ -1,0 +1,23 @@
+{
+  "name": "core-api",
+  "version": "1.0.0",
+  "description": "API core for class function using express and mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadanang/core-api.git"
+  },
+  "keywords": [
+    "api",
+    "core"
+  ],
+  "author": "m.anangnur@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohammadanang/core-api/issues"
+  },
+  "homepage": "https://github.com/mohammadanang/core-api#readme"
+}
