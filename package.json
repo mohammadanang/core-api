@@ -1,5 +1,5 @@
 {
-  "name": "core-api",
+  "name": "@anangm182/core-api",
   "version": "1.0.0",
   "description": "API core for class function using express and mongodb",
   "main": "index.js",
