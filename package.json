@@ -6,18 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mohammadanang/core-api.git"
-  },
+  "repository": "mohammadanang/core-api",
   "keywords": [
     "api",
     "core"
   ],
   "author": "m.anangnur@gmail.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mohammadanang/core-api/issues"
-  },
-  "homepage": "https://github.com/mohammadanang/core-api#readme"
+  "license": "MIT"
 }
