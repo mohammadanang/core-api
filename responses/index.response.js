@@ -43,4 +43,4 @@ class Response {
     }
 }
 
-module.expurts = Response
+module.exports = Response
