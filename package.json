@@ -12,5 +12,11 @@
     "core"
   ],
   "author": "m.anangnur@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
 }
