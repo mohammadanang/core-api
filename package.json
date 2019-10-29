@@ -15,5 +15,9 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "mongoose": "^5.7.7",
+    "mongoose-paginate": "^5.0.3"
   }
 }
