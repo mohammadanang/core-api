@@ -1,28 +1,26 @@
 class API {
-  constructor(model, model2) {
+  constructor(model) {
       this.model = model
-      this.model2 = model2
   }
 
-  async list(q, request_path) {
+  async list(q, population) {
       try {
           let params = {}
-
           let populate_params = []
-
-          if(request_path == []){
-              populate_params = []
-          }else{
-              populate_params = {path: request_path, model: this.model2}
-          }
 
           if(q) {
               params = q
           }
+        
+          if(population) {
+              populate_params = population
+          }
 
-          let data = await this.model.find(params).populate(
-              populate_params    
-          ).exec()
+          let data = await this.model
+              .find(params)
+              .populate(populate_params)
+              .lean()
+              .exec()
 
           return data
       } catch(err) {
