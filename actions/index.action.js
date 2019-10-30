@@ -84,6 +84,45 @@ class API {
       throw err;
     }
   }
+    async paginate(q, population, meta) {
+        try {
+            let params = {},
+                populate = [],
+                options = {}
+            
+            if(q) {
+                params = q
+            }
+          
+            if(population) {
+                populate = population
+            }
+          
+            if(meta) {
+                options = {
+                    populate,
+                    ...meta
+                }
+            }
+            
+            let data = await this.model.paginate(
+                params,
+                options
+            )
+            
+            let meta = {
+                total: data.total,
+                limit: data.limit,
+                page: data.page,
+                pages: data.pages
+            }
+            data = data.docs
+
+            return { data, meta }
+        } catch(err) {
+            throw err
+        }
+    }
 }
 
 module.exports = API;
