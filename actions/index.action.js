@@ -84,7 +84,7 @@ class API {
       throw err;
     }
   }
-    async paginate(q, population, meta) {
+    async paginate(q, population, opts) {
         try {
             let params = {},
                 populate = [],
@@ -98,10 +98,10 @@ class API {
                 populate = population
             }
           
-            if(meta) {
+            if(opts) {
                 options = {
                     populate,
-                    ...meta
+                    ...opts
                 }
             }
             
