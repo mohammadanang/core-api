@@ -72,39 +72,39 @@ class API {
       throw err;
     }
   }
-    async paginate(req){
+    async paginate(q, population, meta) {
         try {
-            let params = {}            
-            let limit = parseInt(req.query.limit)
-            if(!limit) {
-                params.limit = parseInt(process.env.DATA_LIMIT)
-            }else {
-                params.limit = limit
+            let params = {},
+                populate = [],
+                options = {}
+            
+            if(q) {
+                params = q
             }
-            let page = parseInt(req.query.page)
-            if(!page){
-                params.page = parseInt(process.env.DATA_PAGE)
-            } else {
-                params.page = page
+          
+            if(population) {
+                populate = population
             }
-
-            let data = await this.model.paginate({}, params)
-            .then(res => {
-                return {
-                    data: res.docs,
-                    total: res.total,
-                    limit: res.limit,
-                    page: res.page,
-                    pages: res.pages
+          
+            if(meta) {
+                options = {
+                    populate,
+                    ...meta
                 }
-            })
+            }
+            
+            let data = await this.model.paginate(
+                params,
+                options
+            )
+            
             let meta = {
                 total: data.total,
                 limit: data.limit,
                 page: data.page,
                 pages: data.pages
             }
-            data = data.data
+            data = data.docs
 
             return { data, meta }
         } catch(err) {
