@@ -18,12 +18,18 @@ class API {
         }
     }
 
-    async show(q) {
-        try {
-            let data = await this.model.findOne(q).exec()
+    async show(q, population) {
+        try{
+            let populate_params = []
+
+            if(population){
+                populate_params = population
+            }
+
+            let data = await this.model.findOne(q).populate(populate_params).lean().exec()
 
             return data
-        } catch(err) {
+        } catch(err){
             throw err
         }
     }
