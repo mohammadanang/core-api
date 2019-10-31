@@ -32,7 +32,7 @@ class API {
     } catch(err) {
         throw err
     }
-}
+  }
 
   async create(input) {
     try {
