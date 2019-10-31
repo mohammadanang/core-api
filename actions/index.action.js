@@ -16,7 +16,8 @@ class API {
         } catch(err) {
             throw err
         }
-    }
+    }       
+    
 
     async show(q, population) {
         try{
