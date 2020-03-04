@@ -12,11 +12,11 @@ API core for Node.js using express framework and mongodb NoSQL database.
 #### List of Api parent class:
 
 - this.list(q, population)
-- this.show(q)
+- this.show(q, population)
 - this.create(input)
 - this.update(q, input, opts)
-- this.delete(q)
-- this.softDelete(q)
+- this.delete(q, opts)
+- this.softDelete(q, opts)
 - this.paginate(q, population, opts)
 
 #### List of Controller parent class:

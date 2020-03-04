@@ -17,10 +17,10 @@ class API {
           }
 
           let data = await this.model
-              .find(params)
-              .populate(populate_params)
-              .lean()
-              .exec()
+            .find(params)
+            .populate(populate_params)
+            .lean()
+            .exec()
 
           return data
       } catch(err) {
@@ -28,9 +28,24 @@ class API {
       }
   }
 
-  async show(q) {
+  async show(q, population) {
+      let params = {}
+      let populate_params = []
+
+      if(q) {
+          params = q
+      }
+
+      if(population) {
+          populate_params = population
+      }
+
       try {
-          let data = await this.model.findOne(q).exec()
+          let data = await this.model
+            .findOne(params)
+            .populate(populate_params)
+            .lean()
+            .exec()
 
           return data
       } catch(err) {
@@ -52,7 +67,7 @@ class API {
   async update(q, input, opts) {
       try {
           let data = await this.model.findOneAndUpdate(
-              q, input, opts
+            q, input, opts
           ).exec()
 
           return data
@@ -61,9 +76,11 @@ class API {
       }
   }
 
-  async delete(q) {
+  async delete(q, opts) {
       try {
-          let data = await this.model.findOneAndDelete(q).exec()
+          let data = await this.model.findOneAndDelete(
+            q, opts
+          ).exec()
 
           return data
       } catch(err) {
@@ -71,13 +88,15 @@ class API {
       }
   }
 
-  async softDelete(q) {
+  async softDelete(q, opts) {
     try {
-      let data = await this.model
-        .findOneAndUpdate(q, {
-          deleted_at: Date.now
-        })
-        .exec();
+      let params = {
+        deleted_at: Date.now
+      }
+
+      let data = await this.model.findOneAndUpdate(
+        q, params, opts
+      ).exec();
 
       return data;
     } catch (err) {
@@ -90,7 +109,7 @@ class API {
         let params = {},
             populate = [],
             options = {}
-          
+        
         if(q) {
             params = q
         }
