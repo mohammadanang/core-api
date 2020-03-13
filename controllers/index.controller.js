@@ -17,12 +17,13 @@ class Controller {
         eventEmitter.on("log.custom", logging)
     }
 
-    success(obj, dataLog = []) { // [0]:{ model, model_id, action, notes }
+    success(obj, dataLog) { // [0]:{ model, model_id, action, notes }
         let { code, message, data } = obj
         let result = response.success(code, message, data)
         if(dataLog && dataLog.length > 0) {
-            dataLog[0].type = "success"
+            dataLog[0].type = result.status
             dataLog[0].value = [result]
+            dataLog[0].notes = result.message
 
             emit(dataLog)
         }
@@ -30,12 +31,13 @@ class Controller {
         return result
     }
 
-    error(obj, dataLog = []) { // [0]:{ action, notes }
+    error(obj, dataLog) { // [0]:{ action, notes }
         let { code, message } = obj
         let result = response.error(code, message)
         if(dataLog && dataLog.length > 0) {
-            dataLog[0].type = "error"
+            dataLog[0].type = result.status
             dataLog[0].value = [result]
+            dataLog[0].notes = result.message
 
             emit(dataLog)
         }
