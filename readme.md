@@ -26,6 +26,17 @@ API core for Node.js using express framework and mongodb NoSQL database.
 
 ### How to use:
 
+Import in base project file to connect with database. Example:
+
+- root file
+
+```javascript
+...
+require("api-inti").connection(process.env.MONGODB_HOST)
+...
+
+```
+
 Import as parent class or function. For example:
 
 - actions file
