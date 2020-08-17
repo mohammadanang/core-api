@@ -4,8 +4,8 @@ class Controller {
     constructor() {}
     
     success(obj) {
-        let { code, message, data } = obj
-        return response.success(code, message, data)
+        let { code, message, data, meta } = obj
+        return response.success(code, message, data, meta)
     }
 
     error(obj) {
