@@ -13,22 +13,11 @@ const emit = (data) => {
 }
 
 class Controller {
-    onLog() {
-        eventEmitter.on("log.custom", logging)
-    }
-
-    success(obj, dataLog) { // [0]:{ model, model_id, action, notes }
-        let { code, message, data } = obj
-        let result = response.success(code, message, data)
-        if(dataLog && dataLog.length > 0) {
-            dataLog[0].type = result.status
-            dataLog[0].value = [result]
-            dataLog[0].notes = result.message
-
-            emit(dataLog)
-        }
-
-        return result
+    constructor() {}
+    
+    success(obj) {
+        let { code, message, data, meta } = obj
+        return response.success(code, message, data, meta)
     }
 
     error(obj, dataLog) { // [0]:{ action, notes }

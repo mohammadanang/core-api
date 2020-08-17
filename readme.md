@@ -21,10 +21,21 @@ API core for Node.js using express framework and mongodb NoSQL database.
 
 #### List of Controller parent class:
 
-- this.success({code, msg, data})
+- this.success({code, msg, data, meta})
 - this.error({code, msg})
 
 ### How to use:
+
+Import in base project file to connect with database. Example:
+
+- root file
+
+```javascript
+...
+require("api-inti").connection(process.env.MONGODB_HOST)
+...
+
+```
 
 Import as parent class or function. For example:
 

@@ -3,7 +3,7 @@ let errorCode = 400
 let message = ""
 
 class Response {
-    static success(code, msg, data) {
+    static success(code, msg, data, meta) {
         if(code) {
             successCode = code
         }
@@ -18,6 +18,10 @@ class Response {
             status,
             message,
             data
+        }
+
+        if(meta) {
+            result.meta = meta
         }
 
         return result
