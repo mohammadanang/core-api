@@ -21,7 +21,7 @@ API core for Node.js using express framework and mongodb NoSQL database.
 
 #### List of Controller parent class:
 
-- this.success({code, msg, data})
+- this.success({code, msg, data, meta})
 - this.error({code, msg})
 
 ### How to use:
